@@ -6,9 +6,15 @@
  	 <version>0.0.1</version>
 
 	<properties>
-		<lwjgl.version>3.2.3</lwjgl.version>
-		<lwjgl.natives>natives-windows</lwjgl.natives>
+            <lwjgl.version>3.2.3</lwjgl.version>
+            <lwjgl.natives>natives-windows</lwjgl.natives>
+            <maven.compiler.source>14</maven.compiler.source>
+            <maven.compiler.target>14</maven.compiler.target>
 	</properties>
+        
+        <build>
+            <sourceDirectory>${project.basedir}/src</sourceDirectory>
+        </build>
 
 	<dependencyManagement>
 		<dependencies>
