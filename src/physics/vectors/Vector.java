@@ -87,6 +87,20 @@ public abstract class Vector <C extends Vector> {
         return Collections.unmodifiableList(list);
     }
     
+    public final C onEach(DimensionOperator filter) {
+        C nv = copy();
+        for(int i = 0; i < nv.getDimensions(); i++) {
+            nv.values[i] = filter.operationOnDimension(nv.values[i], i);
+        }
+        return nv;
+    }
+    
+    public interface DimensionOperator {
+    
+        public abstract double operationOnDimension(double value, int index);
+    
+    }
+    
     protected final void checkIndexCompatibility(int index) throws VectorDimensionMissmatchException {
         if(index < 0 || index >= getDimensions()) throw new VectorDimensionMissmatchException();
     }

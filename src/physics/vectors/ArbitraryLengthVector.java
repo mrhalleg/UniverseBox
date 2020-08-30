@@ -6,6 +6,10 @@ package physics.vectors;
  */
 public class ArbitraryLengthVector extends Vector<ArbitraryLengthVector> {
 
+    public ArbitraryLengthVector(int dimensions) {
+        super(dimensions, new double[dimensions]);
+    }
+
     public ArbitraryLengthVector(double... values) {
         super(values.length, values);
     }
