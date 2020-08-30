@@ -78,6 +78,16 @@ public abstract class Vector <C extends Vector> {
             return values[index];
     }
     
+    public final C set(int index, double value) throws VectorDimensionMissmatchException {
+        if(index < 0 || index >= getDimensions())
+            throw new VectorDimensionMissmatchException();
+        else {
+            C nv = copy();
+            nv.values[index] = value;
+            return nv;
+        } 
+    }
+    
     /**
      * Returns an immutable List of all the values.
      * @return 
@@ -106,7 +116,7 @@ public abstract class Vector <C extends Vector> {
     }
     
     protected final void checkVectorCompatibility(Vector<C> vec2) throws VectorDimensionMissmatchException {
-        checkIndexCompatibility(vec2.getDimensions());
+        if(getDimensions() != vec2.getDimensions()) throw new VectorDimensionMissmatchException();
     }
     
     @Override
