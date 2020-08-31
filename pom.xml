@@ -8,8 +8,8 @@
 	<properties>
             <lwjgl.version>3.2.3</lwjgl.version>
             <lwjgl.natives>natives-windows</lwjgl.natives>
-            <maven.compiler.source>14</maven.compiler.source>
-            <maven.compiler.target>14</maven.compiler.target>
+            <maven.compiler.source>13</maven.compiler.source>
+            <maven.compiler.target>13</maven.compiler.target>
 	</properties>
         
         <build>

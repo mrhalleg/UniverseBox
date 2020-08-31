@@ -7,6 +7,8 @@ public abstract class Scene {
 
 	public abstract void init();
 
-	public abstract void update();
+	public abstract void update(float dtime);
+
+	public abstract void cleanUp();
 
 }

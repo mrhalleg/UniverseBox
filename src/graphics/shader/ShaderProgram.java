@@ -1,22 +1,23 @@
 package graphics.shader;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.FloatBuffer;
-
+import graphics.data.DataHandle;
+import graphics.enities.Entity;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 
-public abstract class ShaderProgram {
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.FloatBuffer;
+
+public abstract class ShaderProgram<D extends DataHandle, E extends Entity> {
 
 	private int programID;
 	private int vertexShaderID;
 	private int fragmentShaderID;
-
 	private FloatBuffer fb = BufferUtils.createFloatBuffer(16);
 
 	public ShaderProgram(String vertexFile, String fragmentFile) {
@@ -25,10 +26,10 @@ public abstract class ShaderProgram {
 		programID = GL20.glCreateProgram();
 		GL20.glAttachShader(programID, vertexShaderID);
 		GL20.glAttachShader(programID, fragmentShaderID);
-		bindAttributes();
 		GL20.glLinkProgram(programID);
 		GL20.glValidateProgram(programID);
 	}
+
 
 	public void start() {
 		GL20.glUseProgram(programID);
@@ -47,9 +48,7 @@ public abstract class ShaderProgram {
 		GL20.glDeleteProgram(programID);
 	}
 
-	protected abstract void bindAttributes();
-
-	protected int getUniformLocation(String name) {
+	public int getUniformLocation(String name) {
 		return GL20.glGetUniformLocation(programID, name);
 	}
 
