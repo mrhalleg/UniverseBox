@@ -14,6 +14,18 @@ public class Vector3 extends Vector<Vector3> {
         super(3, values);
     }
 
+    public double x() {
+        return get(0);
+    }
+    
+    public double y() {
+        return get(1);
+    }
+    
+    public double z() {
+        return get(2);
+    }
+    
     @Override
     public int getDimensions() {
         return 3;
