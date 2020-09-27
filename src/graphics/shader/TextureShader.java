@@ -2,7 +2,7 @@ package graphics.shader;
 
 import graphics.data.TexturedDataHandle;
 import graphics.enities.Entity3D;
-import graphics.renderObjects.Camera;
+import graphics.render.Camera;
 import org.lwjgl.opengl.GL11;
 
 public class TextureShader extends ShaderProgram<TexturedDataHandle, Entity3D> {

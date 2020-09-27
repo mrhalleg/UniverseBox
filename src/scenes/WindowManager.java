@@ -83,7 +83,7 @@ public class WindowManager {
 	}
 
 	public static void main(String[] args) {
-		new WindowManager(400, 400, "test").run();
+		new WindowManager(800, 800, "test").run();
 	}
 
 }

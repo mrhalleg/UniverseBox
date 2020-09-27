@@ -96,7 +96,6 @@ public class TestScene extends Scene {
 		GL11.glClearColor(1, 0, 0, 1);
 
 		obj.render();
-
 	}
 
 	@Override

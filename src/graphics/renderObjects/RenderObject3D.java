@@ -2,6 +2,7 @@ package graphics.renderObjects;
 
 import graphics.data.TexturedDataHandle;
 import graphics.enities.Entity3D;
+import graphics.render.Camera;
 import graphics.shader.TextureShader;
 
 public class RenderObject3D extends RenderObject {

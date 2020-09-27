@@ -1,4 +1,4 @@
-package graphics.renderObjects;
+package graphics.render;
 
 import org.joml.Matrix4f;
 

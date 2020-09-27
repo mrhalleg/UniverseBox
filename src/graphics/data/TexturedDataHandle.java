@@ -3,7 +3,7 @@ package graphics.data;
 public class TexturedDataHandle extends DataHandle<TexturedDataHandle> {
 
 	public TexturedDataHandle() {
-		super(2);
+		super(2, true);
 	}
 
 	public TexturedDataHandle storePositions(float[] positions) {

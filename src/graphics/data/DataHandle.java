@@ -15,11 +15,13 @@ public abstract class DataHandle<C extends DataHandle<?>> {
 	private int indexVboID;
 	private int vertexCount;
 	private boolean[] isSet;
+	private boolean needsIndeces;
 
 
-	public DataHandle(int length) {
+	public DataHandle(int length, boolean needsIndeces) {
 		vboIDs = new int[length];
 		isSet = new boolean[length];
+		this.needsIndeces = needsIndeces;
 	}
 
 	public C init() {
@@ -35,9 +37,10 @@ public abstract class DataHandle<C extends DataHandle<?>> {
 				throw new RuntimeException();
 			}
 		}
-		if (indexVboID == 0) {
+		if (indexVboID == 0 && needsIndeces) {
 			throw new RuntimeException();
 		}
+		isSet = null;
 		return (C) this;
 	}
 
