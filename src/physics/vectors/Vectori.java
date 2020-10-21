@@ -11,16 +11,16 @@ import java.util.stream.Collectors;
  * @author Lennard
  * @param <C>
  */
-public abstract class Vector <C extends Vector> {
+public abstract class Vectori <C extends Vectori> {
     
-    protected double[] values;
+    protected int[] values;
 
     /**
      * Clones the array, so it can ensure the array is immutable.You may use the refference to the original array as you wish.
      * @param dimensions how many dimensions this vector should have
      * @param values the values to initialize this vector with
      */
-    public Vector(int dimensions, double... values) {
+    public Vectori(int dimensions, int... values) {
         if(dimensions != values.length) throw new VectorDimensionMissmatchException();
         this.values = values.clone();
     }
@@ -30,14 +30,14 @@ public abstract class Vector <C extends Vector> {
     
     
     public final double getLength() {
-        double s = 0;
-        for(double d : values) {
+        int s = 0;
+        for(int d : values) {
             s += d;
         }
         return Math.sqrt(s);
     }
     
-    public final C add(Vector<C> vec2) throws VectorDimensionMissmatchException {
+    public final C add(Vectori<C> vec2) throws VectorDimensionMissmatchException {
         checkVectorCompatibility(vec2);
         C nv = copy();
         for(int i = 0; i < getDimensions(); i++) {
@@ -46,7 +46,7 @@ public abstract class Vector <C extends Vector> {
         return nv;
     }
     
-    public final C substract(Vector<C> vec2) throws VectorDimensionMissmatchException {
+    public final C substract(Vectori<C> vec2) throws VectorDimensionMissmatchException {
         checkVectorCompatibility(vec2);
         C nv = copy();
         for(int i = 0; i < getDimensions(); i++) {
@@ -58,7 +58,7 @@ public abstract class Vector <C extends Vector> {
     public final C multiply(double scalar) throws VectorDimensionMissmatchException {
         C nv = copy();
         for(int i = 0; i < getDimensions(); i++) {
-            nv.values[i] = values[i] * scalar;
+            nv.values[i] = (int) (values[i] * scalar);
         }
         return nv;
     }
@@ -66,19 +66,19 @@ public abstract class Vector <C extends Vector> {
     public final C divide(double scalar) throws VectorDimensionMissmatchException {
         C nv = copy();
         for(int i = 0; i < getDimensions(); i++) {
-            nv.values[i] = values[i] / scalar;
+            nv.values[i] = (int) (values[i] / scalar);
         }
         return nv;
     }
     
-    public final double get(int index) throws VectorDimensionMissmatchException {
+    public final int get(int index) throws VectorDimensionMissmatchException {
         if(index < 0 || index >= getDimensions())
             throw new VectorDimensionMissmatchException();
         else
             return values[index];
     }
     
-    public final C set(int index, double value) throws VectorDimensionMissmatchException {
+    public final C set(int index, int value) throws VectorDimensionMissmatchException {
         if(index < 0 || index >= getDimensions())
             throw new VectorDimensionMissmatchException();
         else {
@@ -92,8 +92,8 @@ public abstract class Vector <C extends Vector> {
      * Returns an immutable List of all the values.
      * @return 
      */
-    public final List<Double> getAll() {
-        List<Double> list = Arrays.stream(values).boxed().collect(Collectors.toList());
+    public final List<Integer> getAll() {
+        List<Integer> list = Arrays.stream(values).boxed().collect(Collectors.toList());
         return Collections.unmodifiableList(list);
     }
     
@@ -107,7 +107,7 @@ public abstract class Vector <C extends Vector> {
     
     public interface DimensionOperator {
     
-        public abstract double operationOnDimension(double value, int index);
+        public abstract int operationOnDimension(int value, int index);
     
     }
     
@@ -115,7 +115,7 @@ public abstract class Vector <C extends Vector> {
         if(index < 0 || index >= getDimensions()) throw new VectorDimensionMissmatchException();
     }
     
-    protected final void checkVectorCompatibility(Vector<C> vec2) throws VectorDimensionMissmatchException {
+    protected final void checkVectorCompatibility(Vectori<C> vec2) throws VectorDimensionMissmatchException {
         if(getDimensions() != vec2.getDimensions()) throw new VectorDimensionMissmatchException();
     }
     
@@ -126,8 +126,8 @@ public abstract class Vector <C extends Vector> {
     
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof  Vector)) return false;
-        Vector uv = (Vector) obj;
+        if(!(obj instanceof  Vectori)) return false;
+        Vectori uv = (Vectori) obj;
         return Arrays.equals(values, uv.values);
     }
 

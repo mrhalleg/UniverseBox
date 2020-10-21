@@ -4,25 +4,25 @@ package physics.vectors;
  *
  * @author Lennard
  */
-public class Vector3 extends Vector<Vector3> {
+public class Vector3i extends Vectori<Vector3i> {
 
-    public Vector3(double x, double y, double z) {
+    public Vector3i(int x, int y, int z) {
         super(3, x, y, z);
     }
     
-    public Vector3(double[] values) {
+    public Vector3i(int[] values) {
         super(3, values);
     }
 
-    public double x() {
+    public int x() {
         return get(0);
     }
     
-    public double y() {
+    public int y() {
         return get(1);
     }
     
-    public double z() {
+    public int z() {
         return get(2);
     }
     
@@ -32,8 +32,8 @@ public class Vector3 extends Vector<Vector3> {
     }
 
     @Override
-    public Vector3 copy() {
-        return new Vector3(values);
+    public Vector3i copy() {
+        return new Vector3i(values);
     }
     
 }
