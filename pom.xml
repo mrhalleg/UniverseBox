@@ -14,36 +14,36 @@
         
     <build>
         <sourceDirectory>${project.basedir}/src</sourceDirectory>
-        <resources>
-            <resource>
-                <directory>src/</directory>
-            </resource>
-        </resources>
-            
+        
         <plugins>
+            <!--
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.2.0</version>
                 <executions>
                     <execution>
-                        <id>copy-resources</id>
-                        <!-- here the phase you need -->
+                        <id>copy-resource-one</id>
                         <phase>validate</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
+
                         <configuration>
-                            <outputDirectory>${basedir}/target/src/ressources</outputDirectory>
-                            <resources>          
+                            <outputDirectory>${basedir}/target/classes/ressources</outputDirectory>
+                            <resources>
                                 <resource>
                                     <directory>src/ressources</directory>
-                                    <filtering>true</filtering>
+                                    <excludes>
+                                        <exclude>
+                                            *.java
+                                        </exclude>
+                                    </excludes>
                                 </resource>
-                            </resources>              
-                        </configuration>            
+                            </resources>
+                        </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
