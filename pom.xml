@@ -16,7 +16,6 @@
         <sourceDirectory>${project.basedir}/src</sourceDirectory>
         
         <plugins>
-            <!--
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.2.0</version>
@@ -43,7 +42,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
