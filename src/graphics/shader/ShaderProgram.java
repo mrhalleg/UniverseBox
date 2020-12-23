@@ -11,7 +11,10 @@ import org.lwjgl.opengl.GL20;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.FloatBuffer;
+import ressources.RessourcesAnchor;
 
 public abstract class ShaderProgram<D extends DataHandle, E extends Entity> {
 
@@ -68,7 +71,8 @@ public abstract class ShaderProgram<D extends DataHandle, E extends Entity> {
 	private static int loadShader(String file, int type) {
 		StringBuilder shaderSource = new StringBuilder();
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(file));
+                        InputStream in = RessourcesAnchor.class.getResourceAsStream(file);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 			String line;
 			while ((line = reader.readLine()) != null) {
 				shaderSource.append(line).append("//\n");

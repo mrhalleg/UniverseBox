@@ -8,7 +8,7 @@ import org.lwjgl.opengl.GL11;
 public class TextureShader extends ShaderProgram<TexturedDataHandle, Entity3D> {
 
 	public TextureShader() {
-		super("src/ressources/shaders/vert.shader", "src/ressources/shaders/frag.shader");
+		super("shaders/vert.shader", "shaders/frag.shader");
 	}
 
 	public void renderWithData(TexturedDataHandle data, Entity3D entity, Camera camera) {
